@@ -1,0 +1,353 @@
+/* ============================================================
+   Smart Campus — Dashboard Design Tokens
+   Display face: "Sora" (geometric, structural — campus/systems feel)
+   Body face:    "Inter" (neutral, dense-data friendly)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --ink: #10182b;
+  --ink-soft: #3a4256;
+  --muted: #6b7280;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --border: #e6e8f0;
+  --success: #12a76a;
+  --warn: #d97706;
+  --danger: #dc2626;
+
+  /* role accents */
+  --student-accent: #4f46e5;
+  --student-accent-soft: #eef0fe;
+  --faculty-accent: #0d9488;
+  --faculty-accent-soft: #e9f8f6;
+  --admin-accent: #b45309;
+  --admin-accent-soft: #fbf1e6;
+
+  --radius: 14px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 43, 0.06);
+  --shadow-md: 0 8px 24px rgba(16, 24, 43, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+.dash-shell {
+  --accent: var(--student-accent);
+  --accent-soft: var(--student-accent-soft);
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: "Inter", -apple-system, sans-serif;
+  color: var(--ink);
+}
+.dash-shell.accent-faculty { --accent: var(--faculty-accent); --accent-soft: var(--faculty-accent-soft); }
+.dash-shell.accent-admin   { --accent: var(--admin-accent);   --accent-soft: var(--admin-accent-soft); }
+
+/* ---------------- Sidebar ---------------- */
+.dash-sidebar {
+  width: 248px;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+  gap: 6px;
+  transition: width 0.2s ease;
+  flex-shrink: 0;
+}
+.dash-sidebar.collapsed { width: 76px; }
+
+.dash-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 18px;
+}
+.dash-brand-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.dash-brand-name {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.dash-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+.dash-role-initials {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #ffffff33);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+}
+.dash-role-label { font-size: 13px; font-weight: 600; margin: 0; }
+.dash-role-sub { font-size: 11px; color: #ffffff88; margin: 0; }
+
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  margin-top: 6px;
+}
+.dash-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  color: #d7d9e4;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.dash-nav-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.dash-nav-item.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.dash-nav-icon { width: 18px; text-align: center; }
+
+.dash-collapse-btn, .dash-logout-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #d7d9e4;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.dash-logout-btn:hover { border-color: var(--danger); color: #fff; }
+
+/* ---------------- Main / Topbar ---------------- */
+.dash-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+.dash-topbar {
+  height: 66px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+  flex-shrink: 0;
+}
+.dash-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  width: 340px;
+  max-width: 40vw;
+}
+.dash-search input {
+  border: none; background: none; outline: none;
+  font-size: 13.5px; width: 100%; font-family: inherit;
+}
+.dash-topbar-actions { display: flex; align-items: center; gap: 16px; }
+.dash-icon-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.dash-user { display: flex; align-items: center; gap: 10px; }
+.dash-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+}
+.dash-user-name { font-size: 13.5px; font-weight: 600; margin: 0; }
+.dash-user-sub { font-size: 11.5px; color: var(--muted); margin: 0; }
+
+.dash-content {
+  padding: 26px;
+  overflow-y: auto;
+}
+
+/* ---------------- Reusable content pieces ---------------- */
+.dash-page-title {
+  font-family: "Sora", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.dash-page-subtitle { color: var(--muted); font-size: 13.5px; margin: 0 0 22px; }
+
+.dash-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.dash-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.dash-stat-card::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+.dash-stat-label { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+.dash-stat-value { font-family: "Sora", sans-serif; font-size: 26px; font-weight: 700; margin: 0; }
+.dash-stat-trend { font-size: 11.5px; margin-top: 6px; }
+.dash-stat-trend.up { color: var(--success); }
+.dash-stat-trend.down { color: var(--danger); }
+
+.dash-grid-2 {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 900px) { .dash-grid-2 { grid-template-columns: 1fr; } }
+
+.dash-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.dash-panel-title {
+  font-family: "Sora", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+table.dash-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.dash-table th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.dash-table td {
+  padding: 11px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.dash-table tr:last-child td { border-bottom: none; }
+
+.dash-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.dash-badge.good { background: #e7f8ef; color: var(--success); }
+.dash-badge.warn { background: #fef3e2; color: var(--warn); }
+.dash-badge.bad  { background: #fde8e8; color: var(--danger); }
+
+.dash-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+.dash-list-item:last-child { border-bottom: none; }
+.dash-list-title { font-size: 13px; font-weight: 600; margin: 0; }
+.dash-list-sub { font-size: 11.5px; color: var(--muted); margin: 2px 0 0; }
+
+.dash-progress-track {
+  background: var(--bg);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.dash-progress-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+
+.dash-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.dash-btn:hover { filter: brightness(1.08); }
+.dash-btn.ghost {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Campus Pulse — signature strip: a live, role-tinted activity ticker */
+.dash-pulse {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.dash-pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent);
+  animation: pulse-dot 1.8s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.35); }
+  70% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+.dash-pulse-text { font-size: 12.5px; color: #e7e8f0; }
+.dash-pulse-text b { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-pulse-dot { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .dash-sidebar { position: fixed; z-index: 20; height: 100vh; }
+  .dash-search { display: none; }
+}
