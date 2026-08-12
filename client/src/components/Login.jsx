@@ -23,16 +23,11 @@ function Login() {
         alert(data.message || "Registration failed");
         return;
       }
-      // Save the real logged-in user's info so dashboards can read it
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
 
-      if (role === "student") navigate("/student");
-      else if (role === "faculty") navigate("/faculty");
-      else if (role === "admin") navigate("/admin");
+      alert("Account created successfully! Please sign in.");
+      navigate("/signin");
 
     } catch (err) {
-
       console.error(err);
       alert("Something went wrong. Please try again.");
     }

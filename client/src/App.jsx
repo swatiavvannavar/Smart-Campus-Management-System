@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import SignIn from "./components/SignIn";
 import Login from "./components/Login";
+import ForgotPassword from "./components/ForgotPassword";
 import StudentDashboard from "./components/StudentDashboard";
 import FacultyDashboard from "./components/FacultyDashboard";
 import AdminDashboard from "./components/AdminDashboard";
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Preview pages — no login needed, shown from "Explore Now" */}
         <Route path="/student-preview" element={<StudentPage />} />
