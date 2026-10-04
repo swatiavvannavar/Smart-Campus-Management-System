@@ -60,7 +60,7 @@ function WelcomePage() {
           <section className="info-section">
             <h2>Contact Us</h2>
             <div className="contact-box">
-              <p>📧 Email: Klebca@smartcampus.com</p>
+              <p>📧 Email: Klebcahubli.in</p>
               <p>📞 Phone: +91 98765 43210</p>
               <p>📍 Address: KLE BCA COLLEGE VIDYANAGAR HUBLI, India</p>
             </div>
@@ -164,13 +164,10 @@ function WelcomePage() {
             </div>
           </section>
 
-          <button
-            className="hero-btn"
-            style={{ marginTop: "30px" }}
-            onClick={() => setExplore(false)}
-          >
-            ← Back
-          </button>
+         <div className="back-container">
+  <button onClick={() => setExplore(false)}>← Back</button>
+</div>
+
         </div>
       )}
     </div>

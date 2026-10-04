@@ -33,7 +33,7 @@ function ForgotPassword() {
         return;
       }
 
-      setSuccess("Password updated! Redirecting to sign in...");
+      setSuccess("Password updated!");
       setTimeout(() => navigate("/signin"), 1500);
     } catch (err) {
       console.error(err);
@@ -44,7 +44,8 @@ function ForgotPassword() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Reset Password</h1>
+        <h1 className="reset-title">Reset Password</h1>
+        <br></br>
         <p>Enter your account email and choose a new password.</p>
 
         {error && (

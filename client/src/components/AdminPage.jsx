@@ -7,8 +7,8 @@ function AdminPage() {
 
   return (
     <div className="portal-page">
-      <h1>🏛 Administration Dashboard</h1>
-      <p>Oversee campus operations, facilities, and resources.</p>
+      <h1>🏛 Administration Dashboard</h1><br></br>
+      <p>Oversee campus operations, facilities, and resources.</p><br></br>
 
       {/* Add real admin features below, e.g. cards/stats */}
       <div className="admin-sections">

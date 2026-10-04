@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Welcome.css";
+import instance from "../API/axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -8,36 +9,43 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
+
+     // ✅ Add this line
+  if (password.length < 6) {
+    setError("Password must be at least 6 characters long");
+    return;
+  }
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, role }),
-      });
-      const data = await res.json();
+      const res = await instance.post("/auth/register", { name, email, password, role });
+      const data = res.data;
 
-      if (!res.ok) {
-        alert(data.message || "Registration failed");
-        return;
-      }
-
-      alert("Account created successfully! Please sign in.");
-      navigate("/signin");
+      setSuccess("Account created successfully!");
+      setTimeout(() => {
+        navigate("/signin");
+      }, 1500);
 
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Please try again.");
+      setError(err.response?.data?.message || "Something went wrong. Please try again.");
     }
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Get Started</h1>
-        <p>Create your Smart Campus account to begin.</p>
+        <h1><center>Get Started</center></h1>
+        <br></br>
+        <p><center>Create your Smart Campus account to begin.</center></p>
+
+        {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
+        {success && <p className="success-text">{success}</p>}
 
         <form onSubmit={handleSubmit}>
           <label>Full Name</label>

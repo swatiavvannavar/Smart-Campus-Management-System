@@ -351,3 +351,17 @@ table.dash-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .dash-sidebar { position: fixed; z-index: 20; height: 100vh; }
   .dash-search { display: none; }
 }
+/* its use for image */
+.sp-media {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.sp-media img {
+  width: 100%;
+  height: auto;
+ 
+  display: block;
+}

@@ -7,8 +7,8 @@ function StudentPage() {
 
   return (
     <div className="portal-page">
-      <h1>📚 Student Portal</h1>
-      <p>Access your courses, grades, and campus updates instantly.</p>
+      <h1>📚 Student Portal</h1><br></br>
+      <p>Access your courses, grades, and campus updates instantly.</p><br></br>
 
       <div className="admin-sections">
         <div className="admin-card">

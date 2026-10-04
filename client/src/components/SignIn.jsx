@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Welcome.css";
+import instance from "../API/axios"; 
 
 function SignIn() {
   const navigate = useNavigate();
@@ -12,17 +13,10 @@ function SignIn() {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.message || "Invalid email or password");
-        return;
-      }
+     
+     const res = await instance.post("/auth/login", { email, password });
+     const data = res.data;
+     
 
       // Save the logged-in user's real info so dashboards can read it
       localStorage.setItem("token", data.token);
@@ -42,8 +36,9 @@ function SignIn() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>Sign In</h1>
-        <p>Welcome back to Smart Campus.</p>
+        <h1><center>Sign In</center></h1>
+        <br></br>
+        <p><center>Welcome back to Smart Campus</center></p>
 
         {error && (
           <p style={{ color: "#dc2626", fontSize: "13.5px", marginBottom: "10px" }}>

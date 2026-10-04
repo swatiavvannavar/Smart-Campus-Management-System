@@ -7,8 +7,8 @@ function FacultyPage() {
 
   return (
     <div className="portal-page">
-      <h1>👩‍🏫 Faculty Dashboard</h1>
-      <p>Manage classes, schedules, and student progress with ease.</p>
+      <h1>👩‍🏫 Faculty Dashboard</h1><br></br>
+      <p>Manage classes, schedules, and student progress with ease.</p><br></br>
 
       <div className="admin-sections">
         <div className="admin-card">

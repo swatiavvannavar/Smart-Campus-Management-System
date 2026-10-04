@@ -75,17 +75,27 @@
 }
 /* Hero Section */
 /* Hero Section */
+
+/* Hero Section */
 .hero {
   text-align: center;
-  padding: 120px 20px;
+  height: 80vh;  
+  width: 100%;            /* full viewport height */
+  display: flex;              /* flexbox centering */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-image:
     linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%),
     url("../assets/campus-bg.jpg");
-  background-size: cover;
+  background-size: cover;     /* cover entire screen */
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
+  margin: 0;                  /* remove extra margins */
+  padding: 0;                 /* remove large padding */
 }
+
 
 
 .hero h1 {
@@ -155,7 +165,8 @@
 
 /* Footer */
 .footer {
-  text-align: center;
+  margin-top: auto;    /* pushes footer to the bottom */
+  text-align: center;   /* aligns text to the right end */
   padding: 20px;
   background-color: #121c27;
   color: #fff;
@@ -185,6 +196,8 @@
 }
 
 .hero-btn.outline {
+  display: block;
+  margin: 20px auto 0;
   background: transparent;
   border: 1px solid #64748b;
   color: #f1f5f9;
@@ -331,6 +344,8 @@
   margin: 0 auto;
 }
 
+
+
 .info-card {
   background: #1e293b;
   color: #f1f5f9;
@@ -380,13 +395,22 @@
   width: 100%;
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
-
+.reset-title {
+  white-space: nowrap;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.auth-card {
+  min-width: 450px;
+}
 .auth-card h1 {
   margin-bottom: 8px;
 }
 
 .auth-card p {
-  color: #94a3b8;
+  color: #e0d9d9;
   margin-bottom: 25px;
   font-size: 14px;
 }
@@ -433,4 +457,42 @@
 
 .auth-switch span:hover {
   text-decoration: underline;
+}
+/* login in page  */
+
+.error-text {
+  color: #be0e0e;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.success-text {
+  color: #4fd18a;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.back-container {
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  margin-top: 50px;
+}
+
+
+.back-container button {
+  padding: 14px 32px;        /* bigger size */
+  font-size: 18px;           /* larger text */
+  font-weight: 600;          /* bold text */
+  border-radius: 8px;
+  background: #d4dfe9;       /* same blue as your other buttons */
+  color: #171616;
+  border: none;
+  cursor: pointer;
+  
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.back-container button:hover {
+  background: #3d8fc5;       /* darker blue on hover */
+  transform: scale(1.05);    /* subtle grow effect */
 }
